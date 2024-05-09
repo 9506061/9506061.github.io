@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="" zh-Hant-TW>
+<html lang="zh-Hant-TW">
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>時生 whenslife</title>
     <style>
         .innerWrap {
@@ -27,7 +28,7 @@
         }
 
         header .innerWrap {
-            height: 500px;
+            height: 600px;
             position: relative;
         }
 
@@ -59,7 +60,7 @@
             margin: 0 auto;
             padding: 10px 20px;
             background-color: white;
-            height: 30px;
+            height: 50px;
         }
 
         header nav ul li a:hover {
@@ -94,9 +95,77 @@
         a {
             text-decoration: none;
         }
+        *{box-sizing: border-box;}
+        .slideshow-container{max-width: 1000px;position: relative;margin: auto;}
+        .downshow-container{max-width: 1000px;position: relative;margin: auto;}
+        .mySlides{display: none}
+        .ownSlise{display: none;}
+        .prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
 
-        
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+.active, .dot:hover {
+  background-color: #717171;
+}
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+  
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}
     </style>
+    
 </head>
 
 <body>
@@ -148,6 +217,89 @@
         <section class="farSec" id="FarmerArea">
             <div class="innerWrap" style="display:flex;flex-direction:column;align-items:center">
                 <h2>小農食作</h2>
+                <div class="slideshow-container">
+                    <div class="mySlides fade">
+                        <div class="numbertext">1/8</div>
+                        <img src="小農-1.JPG" style="width: 500px">
+                        <div class="text">Caption Text</div>
+                    </div>
+                    <div class="mySlides fade">
+                        <div class="numbertext">2/8</div>
+                        <img src="小農-2.JPG" style="width: 500px">
+                        <div class="text">Caption Two</div>
+                    </div>
+                    <div class="mySlides fade">
+                        <div class="numbertext">3/8</div>
+                        <img src="小農-3.JPG" style="width: 500px">
+                        <div class="text">Caption Three</div>
+                    </div>
+                    <div class="mySlides fade">
+                        <div class="numbertext">4/8</div>
+                        <img src="小農-4.JPG" style="width: 500px">
+                        <div class="text">Caption Four</div>
+                    </div>
+                    <div class="mySlides fade">
+                        <div class="numbertext">5/8</div>
+                        <img src="小農-5.JPG" style="width: 500px">
+                        <div class="text">Caption Five</div>
+                    </div>
+                    <div class="mySlides fade">
+                        <div class="numbertext">6/8</div>
+                        <img src="小農-6.JPG" style="width: 500px">
+                        <div class="text">Caption Six</div>
+                    </div>
+                    <div class="mySlides fade">
+                        <div class="numbertext">7/8</div>
+                        <img src="小農-7.JPG" style="width: 500px">
+                        <div class="text">Caption Seven</div>
+                    </div>
+                    <div class="mySlides fade">
+                        <div class="numbertext">8/8</div>
+                        <img src="小農-8.JPG" style="width: 500px">
+                        <div class="text">Caption Eight</div>
+                    </div>
+                    <a class="prev" onclick="plusSlides(-1)">〈</a>
+                    <a class="next" onclick="plusSlides(1)">〉</a>
+                </div>
+                <br>
+                <div style="text-align:center">
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                    <span class="dot" onclick="currentSlide(4)"></span>
+                    <span class="dot" onclick="currentSlide(5)"></span>
+                    <span class="dot" onclick="currentSlide(6)"></span>
+                    <span class="dot" onclick="currentSlide(7)"></span>
+                    <span class="dot" onclick="currentSlide(8)"></span>
+                </div>
+                <script>
+                    let slideIndex= 1;
+                    showSlides(slideIndex);
+                    
+                    function plusSlides(n) {
+                      showSlides(slideIndex += n);
+                    }
+                    
+                    function currentSlide(n) {
+                      showSlides(slideIndex = n);
+                    }
+                    
+                    function showSlides(n) {
+                      let i;
+                      let slides = document.getElementsByClassName("mySlides");
+                      let dots = document.getElementsByClassName("dot");
+                      if (n > slides.length) {slideIndex = 1}    
+                      if (n < 1) {slideIndex = slides.length}
+                      for (i = 0; i < slides.length; i++) {
+                        slides[i].style.display = "none";  
+                      }
+                      for (i = 0; i < dots.length; i++) {
+                        dots[i].className = dots[i].className.replace(" active", "");
+                      }
+                      slides[slideIndex-1].style.display = "block";  
+                      dots[slideIndex-1].className += " active";
+                    }
+                    </script>
                 <div style="display:flex;justify-content:center;flex-wrap: wrap; width: 700px;">
                     <img src="Menu_vegetable.JPG" alt="蔬菜菜單" style="width:700px">
                     <div>
@@ -162,6 +314,54 @@
         <section class="whenSec" id="whenslifeArea">
             <div class="innerWrap" style="display:flex;flex-direction: column;align-items: center;">
                 <h2>時生</h2>
+                <div class="downshow-container">
+                    <div class="ownSlides fade">
+                        <div class="numbertext">1/4</div>
+                        <img src="時生1.jpg" style="width: 500px;">
+                        <div class="text"></div>
+                    </div>
+                    <div class="ownSlides fade">
+                        <div class="numbertext">1/4</div>
+                        <img src="時生2.jpg" style="width: 500px;">
+                        <div class="text"></div>
+                    </div>
+                    <div class="ownSlides fade">
+                        <div class="numbertext">1/4</div>
+                        <img src="時生3.jpg" style="width: 500px;">
+                        <div class="text"></div>
+                    </div>
+                    <div class="ownSlides fade">
+                        <div class="numbertext">1/4</div>
+                        <img src="時生4.jpg" style="width: 500px;">
+                        <div class="text"></div>
+                    </div>
+                    <a class="prev" onclick="pullSlides(-1)">〈</a>
+                    <a class="next" onclick="pullSlides(1)">〉</a>
+                </div>
+                <br>
+                <div style="text-align: center;">
+                    <span class="dot" onclick="furtureSlide(1)"></span>
+                    <span class="dot" onclick="furtureSlide(2)"></span>
+                    <span class="dot" onclick="furtureSlide(3)"></span>
+                    <span class="dot" onclick="furtureSlide(4)"></span>
+                </div>
+                <script>
+                    let downIndex=1;
+                    improveSlides(downIndex);
+                    function pullSlides(n){improveSlides(downIndex+=n);}
+                    function furtureSlide(n){improveSlides(downIndex=n);}
+                    function improveSlides(n){
+                        let i;
+                        let slides=document.getElementsByClassName("ownSlides");
+                        let dots=document.getElementsByClassName("dot");
+                        if(n>slides.length){downIndex=1}
+                        if(n<1){downIndex=slides.length}
+                        for (i=0;i<slides.length;i++){slides[i].style.display="none";}
+                        for(i=0;i<dots.length;i++){dots[i].className=dots[i].className.replace("active","");}
+                        slides[downIndex-1].style.display="block";
+                        dots[downIndex-1].className+="active";
+                    }
+                </script>
                 <div style="display: flex;justify-content: center;flex-wrap: wrap;width: 700;">
                 <p><img src="Menu_dessert.JPG" alt="甜品菜單" style="width: 700px"></p>
                     <div >
